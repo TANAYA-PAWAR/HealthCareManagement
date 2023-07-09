@@ -1,0 +1,45 @@
+<app-index></app-index>
+<div class="container" style="margin-top: 8%;">
+  <div class="text-center">
+    <h1>Bill Registration Page</h1>
+    <p></p>
+  </div>
+  <div class="row justify-content-center align-items-center">
+    <div class="col-10 col-md-8 col-lg-6">
+      <!-- form -->
+      <form name="billForm" class="form-example" (ngSubmit)="b.form.valid && onSubmit()" #b="ngForm" novalidate>
+
+        <!-- Bill Amount -->
+        <div class="form-group">
+            <label for="bAmt">Treatment Charge : </label>
+            <input type="number" class="form-control" id="bAmt" name="bAmt" [(ngModel)]="bill.bAmt" #bAmt="ngModel" [ngClass]="{ 'is-invalid': b.submitted && bAmt.invalid }" required />
+            <div *ngIf="b.submitted && bAmt.invalid" class="invalid-feedback">
+                <div *ngIf="bAmt.errors.required">Amount is required</div>
+            </div>
+        </div>
+
+        <!-- Patient Id -->
+        <div class="form-group">
+            <label for="patient">Patient id : </label>
+            <select name="patient" class="form-control" [(ngModel)]="bill.patient.pid">
+              <option [value]="pat.pid" *ngFor="let pat of patientList">
+                {{pat.pid}} {{pat.pName}}
+              </option>
+            </select>
+        </div>
+
+        <!-- Insurance Id -->
+        <div class="form-group">
+            <label for="insurance">insurance id : </label>
+            <select name="insurance" class="form-control" [(ngModel)]="bill.insurance.iNo">
+              <option [value]="ins.iNo" *ngFor="let ins of insList">
+                {{ins.iNo}} ({{ins.patient.pid}} {{ins.patient.pName}})
+              </option>
+            </select>
+        </div>
+
+        <button class="btn btn-primary btn-customized">{{btn}}</button>
+      </form>
+    </div>
+  </div>
+</div>

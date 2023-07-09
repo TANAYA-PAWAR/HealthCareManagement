@@ -1,0 +1,75 @@
+<app-index></app-index>
+<div class="container" style="margin-top: 8%;">
+    <div class="text-center">
+        <h3>Doctor Page</h3>
+    </div>
+        <div class="row justify-content-center align-items-center">
+            <div class="col-10 col-md-8 col-lg-6">
+                
+<form name="docForm" (ngSubmit)="d.form.valid && onSubmit()" #d="ngForm" novalidate>
+
+    <!-- docId -->
+    <!-- <div class="form-group">
+        <label for="doctorId">Doc Id</label>
+        <input type="number" name="doctorId" class="form-control" [(ngModel)]="doc.doctorId" #doctorId="ngModel" [ngClass]="{'is-invalid' : d.submitted && doctorId.invalid }" required />
+        <div *ngIf="d.submitted && doctorId.invalid" class="invalid-feedback">
+            <div *ngIf="doctorId.errors.required">Doctor id is required</div>
+        </div>
+    </div> -->
+
+    <!-- docName -->
+    <div class="form-group">
+        <label for="doctorName">Name</label>
+        <input type="text" name="doctorName" class="form-control" [(ngModel)]="doc.doctorName" #doctorName="ngModel" [ngClass]="{'is-invalid' : d.submitted && doctorName.invalid }" required />
+        <div *ngIf="d.submitted && doctorName.invalid" class="invalid-feedback">
+            <div *ngIf="doctorName.errors.required">Doctor Name is required</div>
+        </div>
+    </div>
+
+    <!-- docContactNo -->
+    <div class="form-group">
+        <label for="doctorPhoneNO">Contact No</label>
+        <input type="number" name="doctorPhoneNO" class="form-control" [(ngModel)]="doc.doctorPhoneNO" #doctorPhoneNO="ngModel" [ngClass]="{'is-invalid' : d.submitted && doctorPhoneNO.invalid }" minlength="10" required />
+        <div *ngIf="d.submitted && doctorPhoneNO.invalid" class="invalid-feedback">
+            <div *ngIf="doctorPhoneNO.errors.required">Contact is required</div>
+        </div>
+    </div>
+
+    <!-- docAdd -->
+    <div class="form-group">
+        <label for="doctorAddress">Address</label>
+        <input type="text" name="doctorAddress" class="form-control" [(ngModel)]="doc.doctorAddress" #doctorAddress="ngModel" [ngClass]="{'is-invalid' : d.submitted && doctorAddress.invalid }" required />
+        <div *ngIf="d.submitted && doctorAddress.invalid" class="invalid-feedback">
+            <div *ngIf="doctorAddress.errors.required">Doctor Address is required</div>
+        </div>
+    </div>
+
+    <!-- spec -->
+    <div class="form-group">
+        <label for="specialization">Sepc Id</label>
+        <select name="specialization" class="form-control" [(ngModel)]="doc.specialization.specId">
+            <!-- <option value="">Choose speciality</option> -->
+            <option [value]="spec.specId" *ngFor="let spec of specList">
+                {{spec.specId}} {{ spec.speciality }}
+            </option>
+        </select>
+    </div>
+
+    <!-- dept -->
+    <div class="form-group">
+        <label for="department">department Id</label>
+        <select name="department" class="form-control" [(ngModel)]="doc.department.deptId">
+            <!-- <option value="0">Choose department</option> -->
+            <option [value]="dept.deptId" *ngFor="let dept of deptList">
+                {{dept.deptId}} {{ dept.deptName }}
+            </option>
+        </select>
+    </div>
+    <br>
+    <button class="btn btn-primary">{{btn}}</button>
+    <button class="btn btn-info" style="margin-left: 25px;" (click) ="reset()">reset</button>
+    <br><br>
+</form>
+</div>
+</div>
+</div>

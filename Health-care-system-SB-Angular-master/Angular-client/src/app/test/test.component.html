@@ -1,0 +1,42 @@
+<app-index></app-index>
+<div class="container" style="margin-top: 7.3%;">
+    <div class="text-center">
+        <h1>Test Page</h1>
+    </div>
+<div class="row justify-content-center align-items-center">
+            <div class="col-10 col-md-8 col-lg-6">
+<form name="testForm" (ngSubmit)="t.form.valid && onSubmit()" #t="ngForm" novalidate>
+
+    <!-- testName -->
+    <div class="form-group">
+        <label for="tName">Name</label>
+        <input type="text" name="tName" class="form-control" [(ngModel)]="test.tName" #tName="ngModel" [ngClass]="{'is-invalid' : t.submitted && tName.invalid }" required />
+        <div *ngIf="t.submitted && tName.invalid" class="invalid-feedback">
+            <div *ngIf="tName.errors.required">Name is required</div>
+        </div>
+    </div>
+
+    <!-- date -->
+    <div class="form-group">
+        <label for="tDate">Date</label>
+        <input type="date" name="tDate" class="form-control" [(ngModel)]="test.tDate" #tDate="ngModel" [ngClass]="{'is-invalid' : t.submitted && tDate.invalid }" required />
+        <div *ngIf="t.submitted && tDate.invalid" class="invalid-feedback">
+            <div *ngIf="tDate.errors.required">Date is required</div>
+        </div>
+    </div>
+
+    <!-- doc -->
+    <div class="form-group">
+        <label for="doctor">Doctor Id</label>
+        <select name="doctor" class="form-control" [(ngModel)]="test.doctor.doctorId">
+            <option [value]="doc.doctorId" *ngFor="let doc of doctorList">
+                {{doc.doctorId}}  {{doc.doctorName}}
+            </option>
+        </select>
+    </div>
+
+    <button class="btn btn-primary">Save</button>
+</form>
+</div>
+</div>
+</div>

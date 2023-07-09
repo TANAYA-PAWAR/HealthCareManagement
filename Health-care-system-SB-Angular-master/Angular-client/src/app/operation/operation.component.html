@@ -1,0 +1,54 @@
+<app-index></app-index>
+
+<div class="contanier" style="margin-top: 8%;">
+    <div class="text-center">
+<h1>Operation Page</h1>
+</div>
+<div class="row justify-content-center align-items-center">
+            <div class="col-10 col-md-8 col-lg-6">
+<form name="opForm" (ngSubmit)="o.form.valid && onSubmit()" #o="ngForm" novalidate>
+
+    <!-- oid
+    <div class="form-group">
+        <label for="oid">Operation Id</label>
+        <input type="number" name="oid" class="form-control" [(ngModel)]="op.oid" #oid="ngModel" [ngClass]="{'is-invalid' : o.submitted && oid.invalid }" required />
+        <div *ngIf="o.submitted && oid.invalid" class="invalid-feedback">
+            <div *ngIf="oid.errors.required">Operation id is required</div>
+        </div>
+    </div> -->
+
+    <!-- oName -->
+    <div class="form-group">
+        <label for="oName">Name</label>
+        <input type="text" name="oName" class="form-control" [(ngModel)]="op.oName" #oName="ngModel" [ngClass]="{'is-invalid' : o.submitted && oName.invalid }" required />
+        <div *ngIf="o.submitted && oName.invalid" class="invalid-feedback">
+            <div *ngIf="oName.errors.required">Operation Name is required</div>
+        </div>
+    </div>
+
+    <!-- doctor -->
+    <div class="form-group">
+        <label for="doctor">Doctor Id</label>
+        <select name="doctor" class="form-control" [(ngModel)]="op.doctor.doctorId">
+            <option [value]="doc.doctorId" *ngFor="let doc of docList">
+                {{doc.doctorId}} {{doc.doctorName}}
+            </option>
+        </select>
+    </div>
+
+    <!-- patient -->
+    <div class="form-group">
+        <label for="patient">Patient Id</label>
+        <select name="patient" class="form-control" [(ngModel)]="op.patient.pid">
+            <option [value]="pat.pid" *ngFor="let pat of patientList">
+                {{pat.pid}} {{pat.pName}}
+            </option>
+        </select>
+    </div>
+
+    <button class="btn btn-primary">{{btn}}</button>
+
+</form>
+</div>
+</div>
+</div>
